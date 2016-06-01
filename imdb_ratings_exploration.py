@@ -34,3 +34,11 @@ for label in xlabels:
     label.set_rotation(90)
 
 plt.show()
+____________________________________________________________________
+
+fig_cont = plt.figure(figsize=(8,8))
+ax_cont = fig_cont.add_subplot(1,1,1)
+
+content_data = data[['content_rating','star_rating']]
+
+ax_cont.boxplot(content_data, by='content_rating')
