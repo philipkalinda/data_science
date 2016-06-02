@@ -38,21 +38,34 @@ for label in xlabels:
 plt.show()
 
 
-__________________________________________________________________________________________________________________________________
+# __________________________________________________________________________________________________________________________________
 
 content_data = data[['content_rating','star_rating']]
-cont_f = content_data.content_rating
-content_clean = content_data[(cont_f!='NOT RATED')&(cont_f!='UNRATED')&(cont_f!='APPROVED')&(cont_f!='PASSED')&(cont_f!='TV-MA')]
-print(content_data.shape)
-print(content_dropped.shape)
+cont_f = content_data['content_rating']
+not_other_filter = ((cont_f!='NOT RATED')&(cont_f!='UNRATED')&(cont_f!='APPROVED')&(cont_f!='PASSED')&(cont_f!='TV-MA'))
+is_other_filter = ((cont_f=='NOT RATED')|(cont_f=='UNRATED')|(cont_f=='APPROVED')|(cont_f=='PASSED')|(cont_f=='TV-MA'))
+content_cleaning = content_data[not_other_filter]
+other_content = content_data[is_other_filter]
 
-content_clean.boxplot(by='content_rating', figsize=(16,8), grid=True)
+other = other_content.values.tolist()
+for i in other:
+    i[0] = 'Other'
+content_cleaner = content_cleaning.values.tolist() + other
+content_cleaned = pd.DataFrame(data=content_cleaner, columns = ('content_rating','star_rating'))
+
+print(content_data.shape)
+print(cont_f.shape)
+print(other_content.shape)
+print(content_cleaning.shape)
+print(content_cleaned.shape)
+
+content_cleaned.boxplot(by='content_rating', figsize=(16,8), grid=True)
 plt.xlabel('Content Rating')
 plt.ylabel('Star Rating')
 plt.title('Star Rating Ranges by Content Rating')
 
 
-__________________________________________________________________________________________________________________________________
+# __________________________________________________________________________________________________________________________________
 
 fig_scat = plt.figure(figsize=(16,8))
 ax_scat = fig_scat.add_subplot(1,1,1)
@@ -60,7 +73,6 @@ ax_scat = fig_scat.add_subplot(1,1,1)
 fit = np.polyfit(data['duration'], data['star_rating'],1)
 ax_scat.scatter(data['duration'], data['star_rating'],marker='x')
 ax_scat.plot(data['duration'],(fit[0]*data['duration'])+fit[1], color='red')
-
+ax_scat.set(xlabel='Duration',ylabel='Star Rating', title='Star Rating by Duration Scatter Plot')
+plt.grid(True)
 plt.show()
-
-
