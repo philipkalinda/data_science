@@ -1,64 +1,77 @@
+# Imports
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 %matplotlib inline
 
+# Read Data In
 data = pd.read_csv('https://raw.githubusercontent.com/justmarkham/pandas-videos/master/data/imdb_1000.csv')
+
+# Feel the data out
 cols = data.columns
 desc = data.describe()
-# print(cols) ### Columns
-# print(desc) ### Descriptive Stats
+dimensions = data.shape
+print(dimensions)
+print(cols) ### Columns
+print(desc) ### Descriptive Stats
 
+# Pivot table by genre for star_rating and duration
 genre_pivot = data.pivot_table(index='genre',values=['star_rating','duration'], aggfunc=np.mean)
 print(genre_pivot)
 
+# Plot configurations
 width = 0.35
 indx = np.arange(len(genre_pivot.index.tolist()))
+
+# Double Figure Plot, Axes and Set Up
 fig_gen = plt.figure(figsize=(16,8))
 ax_star_gen = fig_gen.add_subplot(1,2,1)
 ax_duration_gen = fig_gen.add_subplot(1,2,2)
 
+# Star Rating data plots and aesthetics  
 ax_star_gen.set(xticks=(indx+(width/2)),xticklabels=genre_pivot.index,ylim=(min(genre_pivot['star_rating'])-0.5,max(genre_pivot['star_rating'])+0.5),title='Star Rating', xlabel='Genre', ylabel='Rating')
 ax_star_gen.bar(indx,genre_pivot['star_rating'],width=0.35, color='blue')
 ax_star_gen.plot(indx,[np.mean(genre_pivot['star_rating']) for i in indx],color = 'red')
-
 xlabels = ax_star_gen.get_xticklabels() 
 for label in xlabels: 
     label.set_rotation(90)
 
+# Duration data plots and aesthetics
 ax_duration_gen.set(xticks=(indx+(width/2)),xticklabels=genre_pivot.index,ylim=(min(genre_pivot['duration'])-10,max(genre_pivot['duration'])+10),title='Duration', xlabel='Genre', ylabel='Duration')
 ax_duration_gen.bar(indx,genre_pivot['duration'],width=0.35, color='green')
 ax_duration_gen.plot(indx,[np.mean(genre_pivot['duration']) for i in indx],color = 'red')
-
 xlabels = ax_duration_gen.get_xticklabels() 
 for label in xlabels:
     label.set_rotation(90)
 
+#Display plots
 plt.show()
 
 
 # __________________________________________________________________________________________________________________________________
 
+# Data cleansing for boxplot figure
 content_data = data[['content_rating','star_rating']]
 cont_f = content_data['content_rating']
 not_other_filter = ((cont_f!='NOT RATED')&(cont_f!='UNRATED')&(cont_f!='APPROVED')&(cont_f!='PASSED')&(cont_f!='TV-MA'))
 is_other_filter = ((cont_f=='NOT RATED')|(cont_f=='UNRATED')|(cont_f=='APPROVED')|(cont_f=='PASSED')|(cont_f=='TV-MA'))
 content_cleaning = content_data[not_other_filter]
 other_content = content_data[is_other_filter]
-
 other = other_content.values.tolist()
 for i in other:
     i[0] = 'Other'
 content_cleaner = content_cleaning.values.tolist() + other
 content_cleaned = pd.DataFrame(data=content_cleaner, columns = ('content_rating','star_rating'))
 
+# Check cleansing process dimensions
 print(content_data.shape)
 print(cont_f.shape)
 print(other_content.shape)
 print(content_cleaning.shape)
 print(content_cleaned.shape)
 
+# Boxplot plot of star_rating score by content_rating with cleaned data & aesthetics
 content_cleaned.boxplot(by='content_rating', figsize=(16,8), grid=True)
 plt.xlabel('Content Rating')
 plt.ylabel('Star Rating')
@@ -67,9 +80,9 @@ plt.title('Star Rating Ranges by Content Rating')
 
 # __________________________________________________________________________________________________________________________________
 
+# Scatter plot of duration against star_rating with line of best fit to determine gradient of observations
 fig_scat = plt.figure(figsize=(16,8))
 ax_scat = fig_scat.add_subplot(1,1,1)
-
 fit = np.polyfit(data['duration'], data['star_rating'],1)
 ax_scat.scatter(data['duration'], data['star_rating'],marker='x')
 ax_scat.plot(data['duration'],(fit[0]*data['duration'])+fit[1], color='red')
