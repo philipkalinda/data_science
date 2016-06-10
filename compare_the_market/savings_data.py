@@ -12,15 +12,16 @@ savings_json_data = parser.find_all('div', id='savings-json')[0]
 savings_py_obj = json.loads(savings_json_data.text)
 
 cols = []
-for key,value in savings_py_obj[0].items():
-    if key not in cols:
-        cols.append(key)
-    else:
-        continue
-
-raw_data = pd.DataFrame()
-
 
 for bank in savings_py_obj:
     for key,value in bank.items():
-        pass
+        if key not in cols:
+            cols.append(key)
+        else:
+            continue
+
+#DataFrame
+raw_data = pd.DataFrame(columns=cols)
+for bank in savings_py_obj:
+    raw_data = raw_data.append(bank, ignore_index=True)
+
