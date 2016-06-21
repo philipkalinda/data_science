@@ -1,5 +1,6 @@
 #R Code:
 library(neuralnet)
+
 #read data that is converted to CSV and delete the area row, forced it to be numeric.
 data<- read.csv("cleaneddata.csv",header=TRUE,colClasses="numeric")
 
@@ -36,14 +37,18 @@ neuralnet5 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV2
 #sixth run
 neuralnet6 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV21+IV22,data=train,hidden=c(8,5,5),linear.output = TRUE,lifesign="full",stepmax=1e6, threshold = 0.075)
 
-#plotting neuralnet
+#neural_net list
+neural_nets = [neuralnet1, neuralnet2, neuralnet3, neuralnet4, neuralnet5, neuralnet6]
 
-plot(neuralnet6, rep = NULL, x.entry = NULL, x.out = NULL, radius = 0.15, 
+#plotting neuralnets
+for(neural_network in net_list){
+plot(neural_network, rep = NULL, x.entry = NULL, x.out = NULL, radius = 0.15, 
               arrow.length = 0.2, intercept = TRUE, intercept.factor = 0.4, 
               information = TRUE, information.pos = 0.1, col.entry.synapse = "black", 
               col.entry = "black", col.hidden = "black", col.hidden.synapse = "black", 
               col.out = "black", col.out.synapse = "black", col.intercept = "blue", 
               fontsize = 8, dimension = 4, show.weights = FALSE, file = NULL) 
+}
 
 #compute based on neuralnet4
 test.r <- (test$DV1)*(max(data$DV1)-min(data$DV1))+min(data$DV1)
