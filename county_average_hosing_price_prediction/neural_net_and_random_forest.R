@@ -26,16 +26,22 @@ neuralnet2 <- neuralnet(DV1 ~ IV1+IV2+IV3+IV4+IV5+IV6+IV7+IV8+IV9+IV10
                         linear.output = TRUE,lifesign="full",stepmax=1e6, threshold = 0.075)
 
 #third run of neuralnetwork = three hidden layers - Does not converge
-neuralnet3 <- neuralnet(DV1 ~ IV1+IV2+IV3+IV4+IV5+IV6+IV7+IV8+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV17+IV18+IV19+IV20+IV21+IV22,data=train,hidden=c(8,5,5),linear.output = TRUE,lifesign="full",stepmax=1e7, threshold = 0.075)
+neuralnet3 <- neuralnet(DV1 ~ IV1+IV2+IV3+IV4+IV5+IV6+IV7+IV8+IV9+IV10
+                        +IV11+IV12+IV13+IV14+IV15+IV16+IV17+IV18+IV19+
+                        IV20+IV21+IV22,data=train,hidden=c(8,5,5),
+                        linear.output = TRUE,lifesign="full",stepmax=1e7, threshold = 0.075)
 
 #fourth run
-neuralnet4 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV21+IV22,data=train,hidden=c(5),linear.output = TRUE,lifesign="full",stepmax=1e6)
+neuralnet4 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV21+IV22,
+                        data=train,hidden=c(5),linear.output = TRUE,lifesign="full",stepmax=1e6)
 
 #fifth run
-neuralnet5 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV21+IV22,data=train,hidden=c(5,3),linear.output = TRUE,lifesign="full",stepmax=1e6, threshold = 0.075)
+neuralnet5 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV21+IV22,
+                        data=train,hidden=c(5,3),linear.output = TRUE,lifesign="full",stepmax=1e6, threshold = 0.075)
 
 #sixth run
-neuralnet6 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV21+IV22,data=train,hidden=c(8,5,5),linear.output = TRUE,lifesign="full",stepmax=1e6, threshold = 0.075)
+neuralnet6 <- neuralnet(DV1 ~ IV5+IV6+IV9+IV10+IV11+IV12+IV13+IV14+IV15+IV16+IV21+IV22,
+                        data=train,hidden=c(8,5,5),linear.output = TRUE,lifesign="full",stepmax=1e6, threshold = 0.075)
 
 #neural_net list
 neural_nets = [neuralnet1, neuralnet2, neuralnet3, neuralnet4, neuralnet5, neuralnet6]
