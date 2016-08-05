@@ -1,4 +1,4 @@
-#Work In Progress
+##Work In Progress##
 
 import requests
 from bs4 import BeautifulSoup
@@ -27,3 +27,4 @@ raw_data = pd.DataFrame(columns=cols)
 for bank in savings_py_obj:
     raw_data = raw_data.append(bank, ignore_index=True)
 
+print(raw_data)
