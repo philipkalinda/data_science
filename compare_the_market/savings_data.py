@@ -46,7 +46,6 @@ c.execute('''CREATE TABLE savings_table
              MaximumAge INTEGER, Pros TEXT, Cons TEXT, GrossAerString TEXT, MinimumInvestmentString TEXT, MaximumInvestmentString TEXT,
              EligibilityAgeString TEXT, HasImage TEXT)''')
 
-c.execute("INSERT INTO savings_table VALUES (#values#)", raw_data) # <- Enter your values here
-
+c.executemany("INSERT INTO savings_table VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", raw_data) # <- Enter your values here
 conn.commit()
 conn.close()
