@@ -94,6 +94,7 @@ print(paste(MSE.lm))
 
 #test randomforest
 library(randomForest)
+#train random forest on all data
 rf1 <- randomForest(DV1 ~.,data=train,ntree=1000)
 imp1 <- importance(rf1)
 pr.rf <- data.frame(predict(rf1,test))
