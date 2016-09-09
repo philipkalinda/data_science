@@ -25,12 +25,20 @@ Here at DrivenData, we believe donating blood is important. Good data-driven sys
 
 In the United States, the American Red Cross is a good resource for information about donating blood. According to their website:
 •Every two seconds someone in the U.S. needs blood.
+
 •More than 41,000 blood donations are needed every day.
+
 •A total of 30 million blood components are transfused each year in the U.S.
+
 •The blood used in an emergency is already on the shelves before the event occurs.
-•Sickle cell disease affects more than 70,000 people in the U.S. About 1,000 babies are born with the disease each year. Sickle cell patients can require frequent blood transfusions throughout their lives.
+
+•Sickle cell disease affects more than 70,000 people in the U.S. About 1,000 babies are born with the disease each year. Sickle cell 
+patients can require frequent blood transfusions throughout their lives.
+
 •More than 1.6 million people were diagnosed with cancer last year. Many of them will need blood, sometimes daily, during their chemotherapy treatment.
+
 •A single car accident victim can require as many as 100 pints of blood.
+
 
 For more information, you can look at the website of the American Red Cross: http://www.redcrossblood.org/donating-blood/why-donate-blood
 
