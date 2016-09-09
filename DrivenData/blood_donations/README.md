@@ -1,8 +1,8 @@
-#### Warm Up: Predict Blood Donations
+### Warm Up: Predict Blood Donations
 
 
 
-##### Predicting Blood Donations
+#### Predicting Blood Donations
 We've all got to start somewhere. 
 This is the smallest, least complex dataset on DrivenData. 
 That makes it a great place to dive into the world of data science competitions. 
@@ -10,14 +10,14 @@ Get your blood pumping and try your hand at predicting donations.
 
 
 
-##### Blood Donations
+#### Blood Donations
 Blood donation has been around for a long time.
 The first successful recorded transfusion was between two dogs in 1665, and the first medical use of human blood in a transfusion occurred in 1818. 
 Even today, donated blood remains a critical resource during emergencies.
 
 
 
-##### Red Cross, 1943
+#### Red Cross, 1943
 
 Our dataset is from a mobile blood donation vehicle in Taiwan. 
 The Blood Transfusion Service Center drives to different universities and collects blood as part of a blood drive. 
@@ -25,7 +25,7 @@ We want to predict whether or not a donor will give blood the next time the vehi
 
 
 
-##### About Donating Blood
+#### About Donating Blood
 
 Here at DrivenData, we believe donating blood is important. Good data-driven systems for tracking and predicting donations and supply needs can improve the entire supply chain, making sure that more patients get the blood transfusions they need.
 
@@ -50,7 +50,7 @@ For more information, you can look at the website of the American Red Cross: htt
 
 
 
-##### The Blood Transfusion Service Center Dataset
+#### The Blood Transfusion Service Center Dataset
 
 The UCI Machine Learning Repository is a great resource for practicing your data science skills. They provide a wide range of datasets for testing machine learning algorithms. Finding a subject matter you're interested in can be a great way to test yourself on real-world data problems. Given our mission, we're interested in predicting if a blood donor will donate within a given time window.
 
@@ -78,7 +78,7 @@ Use information about each donor's history
 
 
 
-##### Submission format
+#### Submission format
 
 This competitions uses log loss as its evaluation metric, so the predictions you submit are the probability that a donor made a donation in March 2007.
 
@@ -96,7 +96,7 @@ To be explicit, you need to submit a file like the following with predictions fo
 
 
 
-##### Data citation
+#### Data citation
 
 Data is courtesy of Yeh, I-Cheng via the UCI Machine Learning repository:
 
