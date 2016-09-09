@@ -1,15 +1,21 @@
 #### Warm Up: Predict Blood Donations
 
+
+
 ##### Predicting Blood Donations
 We've all got to start somewhere. 
 This is the smallest, least complex dataset on DrivenData. 
 That makes it a great place to dive into the world of data science competitions. 
 Get your blood pumping and try your hand at predicting donations.
 
+
+
 ##### Blood Donations
 Blood donation has been around for a long time.
 The first successful recorded transfusion was between two dogs in 1665, and the first medical use of human blood in a transfusion occurred in 1818. 
 Even today, donated blood remains a critical resource during emergencies.
+
+
 
 ##### Red Cross, 1943
 
@@ -70,6 +76,8 @@ Use information about each donor's history
 •Total Volume Donated: this is the total amound of blood that the donor has donated in cubuc centimeters.
 •Months since First Donation: this is the number of months since the donor's first donation.
 
+
+
 ##### Submission format
 
 This competitions uses log loss as its evaluation metric, so the predictions you submit are the probability that a donor made a donation in March 2007.
@@ -85,6 +93,7 @@ To be explicit, you need to submit a file like the following with predictions fo
 263,0.5
 303,0.5
 ...
+
 
 
 ##### Data citation
