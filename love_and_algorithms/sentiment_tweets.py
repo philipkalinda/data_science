@@ -1,8 +1,23 @@
+#
 import re
 import tweepy
 from tweepy import OAuthHandler
 from textblob import TextBlob
- 
+
+women_list = {
+    'sifiso': {
+        'twitter':'@Sifiso7',
+        'facebook': 'Sifiso Chasafara'
+    },
+    'a': {
+        'twitter':'@',
+        'facebook': 'name_a'
+    },
+    'b': {
+        'twitter':'@',
+        'facebook': 'name_b'
+    }
+}
 class TwitterClient(object):
     '''
     Generic Twitter Class for sentiment analysis.
